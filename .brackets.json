@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/bopang/Developer/openpaas/platforms/ios/www/plugins/org.apache.cordova.device/www/device.js",
+        "/Users/bopang/Developer/openpaas/platforms/ios/www/lib/collide/test/util/simple-emitter.spec.js",
+        "/Users/bopang/Developer/openpaas/plugins/org.apache.cordova.device/src/windows8/DeviceProxy.js"
+    ]
+}
