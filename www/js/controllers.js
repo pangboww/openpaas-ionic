@@ -28,7 +28,7 @@ angular.module('esn.controllers', [])
 					function(data){
 						$rootScope.domain = data.data;
 						$rootScope.hide();
-						$rootScope.notify('Login Successfully', 1999);
+						$rootScope.notify('Login Successfully', 999);
 						$state.go('tab.messages');
 					},
 					function(err) {
@@ -44,22 +44,15 @@ angular.module('esn.controllers', [])
 		);
 	};
 })
-.controller('messageController', function($scope, $rootScope, Restangular, activitystreamAPI){
+.controller('messageController', function($scope, $rootScope, getWhatsupService){
+
 
 	$scope.refresh = function(){
-		$scope.messages = {}
-		var activitystreamID = $rootScope.domain.activity_stream.uuid;
-		activitystreamAPI.get(activitystreamID).then(
-			function(data){
-				$scope.messages = data.data;
-				$scope.$broadcast('scroll.refreshComplete');
-			},
-			function(err){
-				alert("Get messages failed: " + err);
-				$scope.$broadcast('scroll.refreshComplete');
-			}
-		);
-
+		$scope.messages = [];
+		$scope.messages = getWhatsupService.all();
+		// $scope.messages = fetchMessagesContent.fetchContent(whatsups);
+		console.log($scope.messages);
+		$scope.$broadcast('scroll.refreshComplete');
 	};
 	$scope.refresh();
 

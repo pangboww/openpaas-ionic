@@ -96,4 +96,83 @@ angular.module('esn.services', ['restangular'])
     };
 }])
 
+.factory('messageAPI', ['Restangular', function(Restangular) {
+
+    function get(options) {
+      if (angular.isString(options)) {
+        return Restangular.one('messages', options).get();
+      }
+      return Restangular.all('messages').getList(options);
+    }
+
+    function post(objectType, data, targets) {
+      var payload = {};
+
+      payload.object = angular.copy(data);
+      payload.object.objectType = objectType;
+      payload.targets = targets;
+
+      return Restangular.all('messages').post(payload);
+    }
+
+    function addComment(objectType, data, inReplyTo) {
+      var payload = {};
+      payload.object = angular.copy(data);
+      payload.object.objectType = objectType;
+      payload.inReplyTo = inReplyTo;
+
+      return Restangular.all('messages').post(payload);
+    }
+
+    return {
+      get: get,
+      post: post,
+      addComment: addComment
+    };
+
+}])
+
+.service('getWhatsupService', function($rootScope, Restangular, activitystreamAPI, messageAPI){
+    
+    this.all = function(){
+        var whatsups = [];
+        var activitystreamID = $rootScope.domain.activity_stream.uuid;
+        activitystreamAPI.get(activitystreamID).then(
+            function(data){
+                angular.forEach(data.data, function(value, key){
+                    if(value.inReplyTo == undefined || value.inReplyTo.length == 0){
+                        var ids = value.object._id;
+                        messageAPI.get({'ids[]': ids}).then(function(response){
+                            whatsups.push(response.data[0]);
+                            console.log(response.data[0]);
+                        });
+                    }
+                });
+            },
+            function(err){
+                alert("Get messages failed: " + err);
+            }
+        );
+        return whatsups;
+    };
+})
+
+// .factory('fetchMessagesContent', ['messageAPI',function(messageAPI){
+//     var fetchContent = function(whatsups){
+//         var messages = [];
+//         angular.forEach(whatsups,function(value, key){
+//                 // var ids = value.object._id || 0;
+//                 // messageAPI.get('ids[]':ids).then(function(response){
+//                 //     messages.push(response.data);
+//                 // });
+            
+//             console.log(value);
+//         });
+//         return messages;
+//     }
+//     return {fetchCon:fetchContent};
+// }])
+
+
+
 
