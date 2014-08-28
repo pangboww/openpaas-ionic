@@ -1,13 +1,9 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 angular.module('esnApp', [
   'ionic',
   'esn.controllers',
   'esn.services',
-  'restangular'
+  'restangular',
+  'angularMoment'
   ])
 .run(function($ionicPlatform, $rootScope, $window, $state, $ionicLoading, userAPI) {
   $ionicPlatform.ready(function() {
@@ -21,15 +17,15 @@ angular.module('esnApp', [
     }
   });
 
-  $rootScope.user = {};
-
-  userAPI.currentUser()
-  .then(
-    function(data) {
-      $rootScope.user = data;
-      $state.go('tab.messages');
-    });
-
+  // TODO: Add automatic login 
+  //
+  //
+  // userAPI.currentUser()
+  // .then(
+  //   function(data) {
+  //     $rootScope.user = data;
+  //     $state.go('tab.messages');
+  //   });
 
   $rootScope.show = function(text){
     $rootScope.loading = $ionicLoading.show({
@@ -120,5 +116,8 @@ angular.module('esnApp', [
 
   RestangularProvider.setBaseUrl('http://localhost:8080/api');
   RestangularProvider.setFullResponse(true);
-
-});
+    RestangularProvider.setDefaultHttpFields({
+    'withCredentials': true
+  });
+})
+;

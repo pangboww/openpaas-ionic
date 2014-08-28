@@ -5,10 +5,10 @@
 */
 angular.module('esn.controllers', [])
 
-.controller('loginController', function($scope, $rootScope, Restangular, $window, loginAPI){
+.controller('loginController', function($scope, $rootScope, Restangular, $state, loginAPI, domainAPI){
 	$scope.user = {
-		username: '',
-		password: ''
+		username: 'pangbo@gmail.com',
+		password: '123456'
 	};
 	$scope.login = function (){
 		$rootScope.show('Please wait... Authenticating');
@@ -27,24 +27,46 @@ angular.module('esn.controllers', [])
 		}).then(
 			function(date) {
 				$rootScope.user = data;
-				$rootScope.hide();
-				$rootScope.notify('Login Successfully', 500);
-				$window.location.href = '#/tab/messages'
+				var domainID = data.domains[0].domain_id;
+
+				domainAPI.get(domainID).then(
+					function(data){
+						$rootScope.domain = data.data;
+						$rootScope.hide();
+						$rootScope.notify('Login Successfully', 1999);
+						$state.go('tab.messages');
+					},
+					function(err) {
+						$rootScope.hide();
+						alert('get domain failed: ' + err);
+					});
 			},
 			function(err) {
 				$rootScope.hide();
-				alert('failed');
+				alert('login failed: ' + err);
 
+			}
+		);
+	};
+})
+.controller('messageController', function($scope, $rootScope, Restangular, activitystreamAPI){
+
+	$scope.refresh = function(){
+		$scope.messages = {}
+		var activitystreamID = $rootScope.domain.activity_stream.uuid;
+		activitystreamAPI.get(activitystreamID).then(
+			function(data){
+				$scope.messages = data.data;
+				$scope.$broadcast('scroll.refreshComplete');
+			},
+			function(err){
+				alert("Get messages failed: " + err);
+				$scope.$broadcast('scroll.refreshComplete');
 			}
 		);
 
 	};
-})
-.controller('messageController', function($scope, $rootScope, Restangular, $window){
-	$scope.messages = {};
-
-
-
+	$scope.refresh();
 
 
 })

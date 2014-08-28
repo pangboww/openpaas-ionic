@@ -7,23 +7,23 @@
   <ion-content>
     
 
-    <ion-refresher  on-refresh="doRefresh()"
+    <ion-refresher  on-refresh="refresh()"
                     pulling-text="Pull to refresh..."
                     refreshing-text="Refreshing!"
                     refreshing-icon="ion-loading-c">
                      
     </ion-refresher>
 
-    <!-- <ion-list>
-    	<ion-item ng-repeat="message in messages" type="item-text-wrap"> -->
+    <ion-list>
+    	<ion-item ng-repeat="message in messages" type="item-text-wrap">
     	   
 
         <div class="list card">
 
           <div class="item item-avatar">
             <img ng-src="./images/user.png">
-            <h2>Marty McFly</h2>
-            <p>November 05, 1955</p>
+            <h2>{{message.actor.displayName}}</h2>
+            <p am-time-ago="message.published"></p>
           </div>
 
         <div class="item item-body">
@@ -39,7 +39,7 @@
           </p>
         </div>
 
-        <div class="item tabs tabs-secondary tabs-icon-left">
+        <div class="item tabs tabs-background-positive tabs-icon-left">
           <a class="tab-item" href="#">
             <i class="icon ion-thumbsup"></i>
             Like
@@ -53,9 +53,9 @@
             Share
           </a>
         </div>
-<!-- 
+
       </ion-item>
-   	</ion-list> -->
+   	</ion-list>
 
   </ion-content>
 </ion-view>

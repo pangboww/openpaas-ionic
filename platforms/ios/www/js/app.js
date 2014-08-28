@@ -21,15 +21,15 @@ angular.module('esnApp', [
     }
   });
 
-  $rootScope.user = {};
-
-  userAPI.currentUser()
-  .then(
-    function(data) {
-      $rootScope.user = data;
-      $state.go('tab.messages');
-    });
-
+  // TODO: Add automatic login 
+  //
+  //
+  // userAPI.currentUser()
+  // .then(
+  //   function(data) {
+  //     $rootScope.user = data;
+  //     $state.go('tab.messages');
+  //   });
 
   $rootScope.show = function(text){
     $rootScope.loading = $ionicLoading.show({
@@ -120,5 +120,8 @@ angular.module('esnApp', [
 
   RestangularProvider.setBaseUrl('http://localhost:8080/api');
   RestangularProvider.setFullResponse(true);
+    RestangularProvider.setDefaultHttpFields({
+    'withCredentials': true
+  });
 
 });
