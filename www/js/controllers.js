@@ -77,10 +77,5 @@ angular.module('esn.controllers', [])
        			}
      		]
 		});
-
 	}
-
-
-
-
 })

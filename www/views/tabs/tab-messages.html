@@ -15,19 +15,19 @@
     </ion-refresher>
     <!-- TODO: add ion-infinite-scroll to implement scroll down load more -->
     <ion-list>
-    	<ion-item ng-repeat="message in messages" type="item-text-wrap">
+    	<ion-item ng-repeat="(key, value) in messages" type="item-text-wrap">
     	   
         <div class="list card">
 
           <div class="item item-avatar">
             <img ng-src="./images/user.png">
-            <h2>{{message.author.firstname+" "+message.author.lastname}}</h2>
-            <p am-time-ago="message.published"></p>
+            <h2>{{value.author.firstname+" "+value.author.lastname}}</h2>
+            <p am-time-ago="value.published"></p>
           </div>
 
           <div class="item item-body">
             <!-- <img class="full-image" ng-src="./images/tux.png"> -->
-            {{message.content}}
+            {{value.content}}
             <p>
               <a href="#" class="subdued">0 Useful</a>
               <a href="#" class="subdued">{{message.responses.length}} Comments</a>
@@ -35,18 +35,22 @@
           </div>
 
           <div class="item tabs tabs-background-positive tabs-icon-left">
-            <a class="tab-item" href="#">
+            
+            <button class="tab-item button button-clear button-light">
               <i class="icon ion-thumbsup"></i>
               Useful
-            </a>
-            <a class="tab-item" href="#">
+            </button>
+
+            <button class="tab-item button button-clear button-light"ng-click="comment(key)">
               <i class="icon ion-chatbox"></i>
               Comment
-            </a>
-            <a class="tab-item" href="#">
+            </button>
+
+            <button class="tab-item button button-clear button-light">
               <i class="icon ion-share"></i>
               Share
-            </a>
+            </button>
+
           </div>
 
       </ion-item>

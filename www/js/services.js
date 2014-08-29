@@ -144,7 +144,6 @@ angular.module('esn.services', ['restangular'])
                         var ids = value.object._id;
                         messageAPI.get({'ids[]': ids}).then(function(response){
                             whatsups.push(response.data[0]);
-                            console.log(response.data[0]);
                         });
                     }
                 });
