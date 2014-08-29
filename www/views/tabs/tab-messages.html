@@ -30,7 +30,7 @@
             {{value.content}}
             <p>
               <a href="#" class="subdued">0 Useful</a>
-              <a href="#" class="subdued">{{message.responses.length}} Comments</a>
+              <a href="#" class="subdued">{{value.responses.length}} Comments</a>
             </p>
           </div>
 
@@ -41,7 +41,7 @@
               Useful
             </button>
 
-            <button class="tab-item button button-clear button-light"ng-click="comment(key)">
+            <button class="tab-item button button-clear button-light" ng-click="checkComment(key)">
               <i class="icon ion-chatbox"></i>
               Comment
             </button>
@@ -52,7 +52,7 @@
             </button>
 
           </div>
-
+        </div>
       </ion-item>
    	</ion-list>
 

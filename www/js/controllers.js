@@ -44,13 +44,11 @@ angular.module('esn.controllers', [])
 		);
 	};
 })
-.controller('messageController', function($scope, $rootScope, $ionicPopup, getWhatsupService, postNewWhatsup){
-
+.controller('messageController', function($scope, $rootScope, $state, $ionicPopup, getWhatsupService, postNewWhatsup){
 
 	$scope.refresh = function(){
 		$scope.messages = [];
 		$scope.messages = getWhatsupService.all();
-		// $scope.messages = fetchMessagesContent.fetchContent(whatsups);
 		$scope.$broadcast('scroll.refreshComplete');
 	}
 	$scope.refresh();
@@ -78,4 +76,38 @@ angular.module('esn.controllers', [])
      		]
 		});
 	}
+
+	$scope.checkComment = function(index){
+		$rootScope.comment = $scope.messages[index];
+		$state.go('tab.comments');
+	}
 })
+
+.controller('commentController', function($scope, $rootScope, messageAPI){
+	$scope.message = $rootScope.comment;
+
+	$scope.postComment = function(){
+		var objectType = 'whatsup';
+      	var data = {
+        	description: $scope.whatsupcomment
+      	};
+      	var inReplyTo = {
+        	objectType: $scope.message.objectType,
+        	_id: $scope.message._id
+     	};
+		
+		messageAPI.addComment(objectType, data, inReplyTo).then(
+        function(response) {
+          $scope.whatsupcomment = '';
+        },
+        function(err) {
+        	console.log(err);
+        }
+      );
+	}
+})
+
+
+
+
+

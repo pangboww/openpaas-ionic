@@ -112,6 +112,16 @@ angular.module('esnApp', [
         }
       }
     })
+    .state('tab.comments', {
+      url: '/comments',
+      views: {
+        'tab-messages': {
+          templateUrl: 'views/message/comments.html',
+          controller: 'commentController'
+        }
+      }
+    });
+
   $urlRouterProvider.otherwise('/login/signin');
 
   RestangularProvider.setBaseUrl('http://localhost:8080/api');

@@ -178,4 +178,31 @@ angular.module('esn.services', ['restangular'])
 }])
 
 
+// TODO: implement hide tabbar function
+//
+//
+// .factory('tabbarShow', function(){
+//   function no(){
+//     var tab = angular.element('#main-tabbar');
+//     console.log(tab);
+//     if (!tab.hasClass('tabs-item-hide')){
+//       tab.addClass('tabs-item-hide');
+//     }
+//     return;
+//   }
+
+//   function yes(){
+//     var tab = angular.element('#main-tabbar');
+//     if (tab.hasClass('tabs-item-hide')){
+//       tab.removeClass('tabs-item-hide');
+//     }
+//     return;
+//   }
+
+//   return{
+//     yes: yes,
+//     no: no
+//   }
+// })
+
 

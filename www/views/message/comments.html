@@ -1,0 +1,40 @@
+<ion-view title="Comments">
+   
+  <ion-content>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img ng-src="./images/user.png">
+        <h2>{{message.author.firstname+" "+message.author.lastname}}</h2>
+        <p am-time-ago="message.published"></p>
+      </div>
+
+      <div class="item item-body">
+        {{message.content}}
+      </div>
+
+      <div class="item item-complex" ng-repeat="comment in message.responses">
+        <div class="item item-avatar">
+          <img ng-src="./images/user.png">
+          <h2>{{comment.author.firstname+" "+comment.author.lastname}}</h2>
+          <p><strong>{{comment.content}}</strong></p>
+          <p am-time-ago="comment.published"></p>
+        </div>
+      </div>
+
+      <div class=""></div>
+
+
+    </div>
+  </ion-content>
+
+  <ion-footer-bar align-title="left" class="bar-dark">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Comment..." ng-model="whatsupcomment">
+      </label>
+      <button class="button button-small button-clear" ng-click="postComment()">
+        Send
+      </button>
+
+</ion-footer-bar>
+</ion-view>
