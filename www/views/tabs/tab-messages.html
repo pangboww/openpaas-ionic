@@ -1,7 +1,7 @@
 <ion-view title="Messages">
   
   <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-compose"></button>
+    <button class="button button-icon icon ion-compose" ng-click="newMessage()"></button>
   </ion-nav-buttons>
     
   <ion-content>
@@ -13,11 +13,10 @@
                     refreshing-icon="ion-loading-c">
                      
     </ion-refresher>
-
+    <!-- TODO: add ion-infinite-scroll to implement scroll down load more -->
     <ion-list>
     	<ion-item ng-repeat="message in messages" type="item-text-wrap">
     	   
-
         <div class="list card">
 
           <div class="item item-avatar">
@@ -26,29 +25,29 @@
             <p am-time-ago="message.published"></p>
           </div>
 
-        <div class="item item-body">
-          <!-- <img class="full-image" ng-src="./images/tux.png"> -->
-          {{message.content}}
-          <p>
-            <a href="#" class="subdued">0 Useful</a>
-            <a href="#" class="subdued">{{message.responses.length}} Comments</a>
-          </p>
-        </div>
+          <div class="item item-body">
+            <!-- <img class="full-image" ng-src="./images/tux.png"> -->
+            {{message.content}}
+            <p>
+              <a href="#" class="subdued">0 Useful</a>
+              <a href="#" class="subdued">{{message.responses.length}} Comments</a>
+            </p>
+          </div>
 
-        <div class="item tabs tabs-background-positive tabs-icon-left">
-          <a class="tab-item" href="#">
-            <i class="icon ion-thumbsup"></i>
-            Useful
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-chatbox"></i>
-            Comment
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-share"></i>
-            Share
-          </a>
-        </div>
+          <div class="item tabs tabs-background-positive tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-thumbsup"></i>
+              Useful
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-chatbox"></i>
+              Comment
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share"></i>
+              Share
+            </a>
+          </div>
 
       </ion-item>
    	</ion-list>

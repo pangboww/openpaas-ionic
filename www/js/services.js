@@ -157,22 +157,26 @@ angular.module('esn.services', ['restangular'])
     };
 })
 
-// .factory('fetchMessagesContent', ['messageAPI',function(messageAPI){
-//     var fetchContent = function(whatsups){
-//         var messages = [];
-//         angular.forEach(whatsups,function(value, key){
-//                 // var ids = value.object._id || 0;
-//                 // messageAPI.get('ids[]':ids).then(function(response){
-//                 //     messages.push(response.data);
-//                 // });
-            
-//             console.log(value);
-//         });
-//         return messages;
-//     }
-//     return {fetchCon:fetchContent};
-// }])
+.service('postNewWhatsup', ['messageAPI', function(messageAPI){
+  return function(newMessageContent, uuid){
 
+    var objectType = 'whatsup';
+    var data = {
+        description: newMessageContent
+      };
+    var target = {
+        objectType: 'activitystream',
+        id: uuid
+      };
+    messageAPI.post(objectType, data, [target]).then(
+        function(response) {
+          console.log(response);
+        },
+        function(err) {
+          console.log(err);
+        });
+  }
+}])
 
 
 

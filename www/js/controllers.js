@@ -44,17 +44,43 @@ angular.module('esn.controllers', [])
 		);
 	};
 })
-.controller('messageController', function($scope, $rootScope, getWhatsupService){
+.controller('messageController', function($scope, $rootScope, $ionicPopup, getWhatsupService, postNewWhatsup){
 
 
 	$scope.refresh = function(){
 		$scope.messages = [];
 		$scope.messages = getWhatsupService.all();
 		// $scope.messages = fetchMessagesContent.fetchContent(whatsups);
-		console.log($scope.messages);
 		$scope.$broadcast('scroll.refreshComplete');
-	};
+	}
 	$scope.refresh();
+
+	$scope.newMessage = function(){
+		$scope.data = {};
+		$ionicPopup.show({
+			templateUrl: './views/message/new-message.html',
+     		title: "A new whatsup to your friend: ",
+     		scope: $scope,
+     		buttons: [
+       			{ text: 'Cancel' },
+       			{
+         			text: '<b>Post</b>',
+         			type: 'button-positive',
+         			onTap: function(e) {
+           				if (!$scope.data.newMessageContent) {
+             				//don't allow the user to close unless he enters wifi password
+             				e.preventDefault();
+           				} else {
+             				postNewWhatsup($scope.data.newMessageContent, $rootScope.domain.activity_stream.uuid)
+           				}
+         			}
+       			}
+     		]
+		});
+
+	}
+
+
 
 
 })
