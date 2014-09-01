@@ -45,7 +45,7 @@ angular.module('esn.controllers', [])
 	};
 })
 .controller('messageController', function($scope, $rootScope, $state, $ionicPopup, getWhatsupService, postNewWhatsup){
-
+	$rootScope.$broadcast('viewState.showTabBar', true);
 	$scope.refresh = function(){
 		$scope.messages = [];
 		$scope.messages = getWhatsupService.all();
@@ -86,7 +86,7 @@ angular.module('esn.controllers', [])
 .controller('commentController', function($scope, $rootScope, messageAPI){
 	
 	$scope.message = $rootScope.comment;
-
+	$rootScope.$broadcast('viewState.showTabBar', false);
 	$scope.postComment = function(){
 		if ($scope.whatsupcomment !== ''){
 			var objectType = 'whatsup';

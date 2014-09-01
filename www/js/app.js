@@ -39,7 +39,7 @@ angular.module('esnApp', [
 
   $rootScope.hide = function(){
     $ionicLoading.hide();
-  }
+  };
 
   $rootScope.notify = function(text, time) {
           var time = time || 1999;
