@@ -3,7 +3,8 @@ angular.module('esnApp', [
   'esn.controllers',
   'esn.services',
   'restangular',
-  'angularMoment'
+  'angularMoment',
+  'ngCordova'
   ])
 .run(function($ionicPlatform, $rootScope, $window, $state, $ionicLoading, userAPI) {
   $ionicPlatform.ready(function() {

@@ -156,7 +156,7 @@ angular.module('esn.services', ['restangular'])
     };
 })
 
-.service('postNewWhatsup', ['messageAPI', function(messageAPI){
+.service('postNewWhatsup', ['messageAPI', '$rootScope', function(messageAPI, $rootScope){
   return function(newMessageContent, uuid){
 
     var objectType = 'whatsup';
@@ -169,7 +169,7 @@ angular.module('esn.services', ['restangular'])
       };
     messageAPI.post(objectType, data, [target]).then(
         function(response) {
-          console.log(response);
+          $rootScope.notify("Post new message successful.", 1999);
         },
         function(err) {
           console.log(err);

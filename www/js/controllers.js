@@ -33,12 +33,12 @@ angular.module('esn.controllers', [])
 					},
 					function(err) {
 						$rootScope.hide();
-						alert('get domain failed: ' + err);
+						$rootScope.notify("Get domainID wrong, please login again or try later.", 1999);
 					});
 			},
 			function(err) {
 				$rootScope.hide();
-				alert('login failed: ' + err);
+				$rootScope.notify("Wrong email or password.", 1999);
 
 			}
 		);
@@ -69,7 +69,8 @@ angular.module('esn.controllers', [])
              				//don't allow the user to close unless he enters wifi password
              				e.preventDefault();
            				} else {
-             				postNewWhatsup($scope.data.newMessageContent, $rootScope.domain.activity_stream.uuid)
+             				postNewWhatsup($scope.data.newMessageContent, $rootScope.domain.activity_stream.uuid);
+             				$scope.refresh();
            				}
          			}
        			}
