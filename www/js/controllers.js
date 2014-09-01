@@ -84,26 +84,33 @@ angular.module('esn.controllers', [])
 })
 
 .controller('commentController', function($scope, $rootScope, messageAPI){
+	
 	$scope.message = $rootScope.comment;
 
 	$scope.postComment = function(){
-		var objectType = 'whatsup';
-      	var data = {
-        	description: $scope.whatsupcomment
-      	};
-      	var inReplyTo = {
-        	objectType: $scope.message.objectType,
-        	_id: $scope.message._id
-     	};
-		
-		messageAPI.addComment(objectType, data, inReplyTo).then(
-        function(response) {
-          $scope.whatsupcomment = '';
-        },
-        function(err) {
-        	console.log(err);
-        }
-      );
+		if ($scope.whatsupcomment !== ''){
+			var objectType = 'whatsup';
+      		var data = {
+        		description: $scope.whatsupcomment
+      		};
+	      	var inReplyTo = {
+	        	objectType: $scope.message.objectType,
+	        	_id: $scope.message._id
+	     	};
+			
+			messageAPI.addComment(objectType, data, inReplyTo).then(
+	        	function(response) {
+	          		$scope.whatsupcomment = '';
+	          		Keyboard.close();
+	        	},
+	        	function(err) {
+	        		console.log(err);
+	        	}
+      		);
+		} else {
+			var text = "Please enter something...";
+			$rootScope.notify(text, 999);
+		}
 	}
 })
 
