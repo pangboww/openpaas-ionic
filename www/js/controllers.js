@@ -97,16 +97,28 @@ angular.module('esn.controllers', [])
 	        	objectType: $scope.message.objectType,
 	        	_id: $scope.message._id
 	     	};
-			
+
 			messageAPI.addComment(objectType, data, inReplyTo).then(
 	        	function(response) {
 	          		$scope.whatsupcomment = '';
+	          		refreshComment();
 	          		Keyboard.close();
 	        	},
 	        	function(err) {
 	        		console.log(err);
 	        	}
       		);
+
+			var refreshComment = function(){
+      			var ids = $rootScope.comment._id;
+      			messageAPI.get({'ids[]': ids}).then(function(response){
+      				$scope.message = response.data[0];
+      				console.log(response.data[0]);
+      			},function(err){
+      				$rootScope.notify("Refresh comment failed: "+err, 1999);
+      			});
+      		};
+
 		} else {
 			var text = "Please enter something...";
 			$rootScope.notify(text, 999);
