@@ -3,8 +3,7 @@ angular.module('esnApp', [
   'esn.controllers',
   'esn.services',
   'restangular',
-  'angularMoment',
-  'ngCordova'
+  'angularMoment'
   ])
 .run(function($ionicPlatform, $rootScope, $window, $state, $ionicLoading, userAPI) {
   $ionicPlatform.ready(function() {
@@ -55,25 +54,9 @@ angular.module('esnApp', [
   $stateProvider
     .state('login', {
       url: '/login',
-      abstract: true,
-      templateUrl: 'views/login/login.html'
-    })
-    .state('login.signin', {
-      url: '/signin',
-      views: {
-        'login-signin': {
-          templateUrl: 'views/login/login-signin.html',
-          controller: 'loginController'
-        }
-      }
-    })
-    .state('login.signup', {
-      url: '/signup',
-      views: {
-        'login-signup': {
-          templateUrl: 'views/login/login-signup.html'
-        }
-      }
+      // abstract: true,
+      templateUrl: 'views/login/login.html',
+      controller: 'loginController'
     })
     .state('tab', {
       url: '/tab',
@@ -123,7 +106,7 @@ angular.module('esnApp', [
       }
     });
 
-  $urlRouterProvider.otherwise('/login/signin');
+  $urlRouterProvider.otherwise('/login');
 
   RestangularProvider.setBaseUrl('http://localhost:8080/api');
   RestangularProvider.setFullResponse(true);

@@ -1,4 +1,4 @@
-<ion-tabs class="tabs-icon-top tabs-positive login tabs-item-hide">
+<!-- <ion-tabs class="tabs-icon-top tabs-positive login tabs-item-hide">
 	<img class="logo" ng-src="./images/logo.png">
 	<ion-tab title="Log In" icon="ion-log-in" href="#/login/signin">
 		<ion-nav-view name="login-signin"></ion-nav-view>
@@ -7,4 +7,14 @@
 		<ion-nav-view name="login-signup"></ion-nav-view>
 	</ion-tab>
 </ion-tabs>
-
+ -->
+<ion-view hide-nav-bar="true">
+	<div class="login">
+		<img class="logo" ng-src="./images/logo.png">
+	    <form method="post">
+			<input type="text" ng-model="user.username" placeholder="Email" autocapitalize="off"  autocomplete="off">
+	        <input type="password" ng-model="user.password" placeholder="Password">
+	        <button type="submit" class="btn btn-primary btn-block btn-large" ng-click="login()">Login now</button>
+	    </form>
+	</div>	
+</ion-view>
