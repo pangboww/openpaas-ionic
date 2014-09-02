@@ -11,9 +11,10 @@ angular.module('esnApp', [
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.StatusBar.styleLightContent();
     }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
+    if(window.cordova.plugins.StatusBar) {
+      cordova.plugins.StatusBar.styleLightContent();
     }
   });
 

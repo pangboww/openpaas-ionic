@@ -1,7 +1,23 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
-//Login
+/* @group Tab Bar View */
 
+a.tab-item {
+    background-color:#282B34 !important;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+a.tab-item-active {
+    	background-color:#232323 !important;
+    }
+ion-nav-bar.nav-bar {
+		background-color: #282B34 !important;;
+}
+
+/* @end */
+
+/* @group Login View */
 .btn { display: inline-block; *display: inline; *zoom: 1; padding: 4px 10px 4px; margin-bottom: 0; font-size: 13px; line-height: 18px; color: #333333; text-align: center;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); vertical-align: middle; background-color: #f5f5f5; background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6); background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6)); background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6); background-image: -o-linear-gradient(top, #ffffff, #e6e6e6); background-image: linear-gradient(top, #ffffff, #e6e6e6); background-repeat: repeat-x; filter: progid:dximagetransform.microsoft.gradient(startColorstr=#ffffff, endColorstr=#e6e6e6, GradientType=0); border-color: #e6e6e6 #e6e6e6 #e6e6e6; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border: 1px solid #e6e6e6; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); cursor: pointer; *margin-left: .3em; }
 .btn:hover, .btn:active, .btn.active, .btn.disabled, .btn[disabled] { background-color: #e6e6e6; }
 .btn-large { padding: 9px 14px; font-size: 15px; line-height: normal; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
@@ -58,9 +74,9 @@ html { width: 100%; height:100%; overflow:hidden; }
 ::-webkit-input-placeholder {
 	color: #555  !important;
 }
+/* @end */
 
-//message
-
+/* @group Message View */
 ion-content.message-view-container {
 	background-color: #F0F1F5;
 }
@@ -90,7 +106,6 @@ ion-item .message-card .author-avatar {
 
 ion-item .message-card .author-avatar img{
 	float: left;
-
 	width: 40px;
 	padding-right: 3px;
 	margin-right: 5px;
@@ -102,10 +117,11 @@ ion-item .message-card .author-avatar p {
 
 ion-item .message-card .message-content {
 	display: block;
-	padding: 10px;
 	color: #000000;
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	font-weight: 500;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 ion-item .message-card .message-content p{
 	overflow: auto;
@@ -165,25 +181,24 @@ ion-item .message-card .buttons button{
 ion-item .message-card .buttons button:active{
 	opacity: 0.4;
 }
+/* @end */
 
-
-//tab bar
-a.tab-item {
-    background-color:#282B34 !important;
-	position: relative;
-	margin-right: auto;
-	margin-left: auto;
-}
-a.tab-item-active {
-    	background-color:#232323 !important;
-    }
-ion-nav-bar.nav-bar {
-		background-color: #282B34 !important;;
+/* @group Comment View */
+ion-footer-bar.comment-input-bar {
+	background-color: #282B34 !important;
 }
 
+ion-footer-bar.comment-input-bar label{
+	background-color: white;
+}
 
-
-
-
-
+ion-footer-bar.comment-input-bar input {
+	background: transparent;
+	font: 100% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+ion-footer-bar.comment-input-bar button {
+	color: white !important;
+	font-weight: 400 !important;
+}
+/* @end */
 
