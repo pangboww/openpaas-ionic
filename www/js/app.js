@@ -54,7 +54,6 @@ angular.module('esnApp', [
   $stateProvider
     .state('login', {
       url: '/login',
-      // abstract: true,
       templateUrl: 'views/login/login.html',
       controller: 'loginController'
     })

@@ -4,7 +4,7 @@
     <button class="button button-icon icon ion-compose" ng-click="newMessage()"></button>
   </ion-nav-buttons>
     
-  <ion-content>
+  <ion-content class="message-view-container">
     
 
     <ion-refresher  on-refresh="refresh()"
@@ -17,46 +17,42 @@
     <ion-list>
     	<ion-item ng-repeat="(key, value) in messages" type="item-text-wrap">
     	   
-        <div class="list card">
+        <div class="message-card">
 
-          <div class="item item-avatar">
+          <div class="author-avatar">
             <img ng-src="./images/user.png">
-            <h2>{{value.author.firstname+" "+value.author.lastname}}</h2>
+            <strong>{{value.author.firstname+" "+value.author.lastname}}</strong>
             <p am-time-ago="value.published"></p>
           </div>
 
-          <div class="item item-body">
+          <div class="message-content">
             <!-- <img class="full-image" ng-src="./images/tux.png"> -->
-            {{value.content}}
-            <p>
-              <a href="#" class="subdued">0 Useful</a>
-              <a href="#" class="subdued">{{value.responses.length}} Comments</a>
+            <p>{{value.content}}</p>
+            
+
+            <p class="status">
+              0 Usefuls&nbsp&nbsp&nbsp&nbsp{{value.responses.length}} Comments
             </p>
           </div>
 
-          <div class="item tabs tabs-background-positive tabs-positive tabs-icon-left">
+          <div class="buttons">
             
-            <button class="tab-item button button-clear button-light">
-              <i class="icon ion-thumbsup"></i>
+            <button class="icon ion-thumbsup">
+              <!-- <i class="icon ion-thumbsup"></i> -->
               Useful
             </button>
 
-            <button class="tab-item button button-clear button-light" ng-click="checkComment(key)">
-              <i class="icon ion-chatbox"></i>
+            <button class="icon ion-chatbox" ng-click="checkComment(key)">
+              <!-- <i class="icon ion-chatbox"></i> -->
               Comment
             </button>
 
-            <button class="tab-item button button-clear button-light">
-              <i class="icon ion-share"></i>
+            <button class="icon ion-share">
+              <!-- <i class="icon ion-share"></i> -->
               Share
             </button>
 
           </div>
-     <!--  <div class="item button-bar">
-            <a class="button button-clear button-positive">First</a>
-            <a class="button button-clear button-positive">Second</a>
-            <a class="button button-clear button-positive">Third</a>
-          </div> -->
         </div>
       </ion-item>
    	</ion-list>
