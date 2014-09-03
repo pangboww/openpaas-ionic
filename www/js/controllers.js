@@ -57,7 +57,6 @@ angular.module('esn.controllers', [])
 		$scope.data = {};
 		$ionicPopup.show({
 			templateUrl: './views/message/new-message.html',
-     		title: "A new whatsup to your friend: ",
      		scope: $scope,
      		buttons: [
        			{ text: 'Cancel' },
@@ -65,8 +64,10 @@ angular.module('esn.controllers', [])
          			text: '<b>Post</b>',
          			type: 'button-positive',
          			onTap: function(e) {
+         				if(window.cordova && window.cordova.plugins.Keyboard) {
+      							cordova.plugins.Keyboard.show();
+    						}
            				if (!$scope.data.newMessageContent) {
-             				//don't allow the user to close unless he enters wifi password
              				e.preventDefault();
            				} else {
              				postNewWhatsup($scope.data.newMessageContent, $rootScope.domain.activity_stream.uuid);
