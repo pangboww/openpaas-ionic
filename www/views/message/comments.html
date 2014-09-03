@@ -1,30 +1,40 @@
 <ion-view title="Comments">
    
-  <ion-content>
-    <div class="list card">
+  <ion-content class="comment-view-container">
+    <div class="comment-card">
 
-      <div class="item item-avatar">
-        <img ng-src="./images/user.png">
-        <h2>{{message.author.firstname+" "+message.author.lastname}}</h2>
-        <p am-time-ago="message.published"></p>
+      <div class="author">
+        <img ng-src="http://localhost:8080/api/users/{{message.author._id}}/profile/avatar">
+        <a><strong>{{message.author.firstname+" "+message.author.lastname}}</strong></a>
+        <p class="status" am-time-ago="message.published"></p>
       </div>
 
-      <div class="item item-body">
-        {{message.content}}
+      <div class="message-body">
+        <p>{{message.content}}</p>
+        <p class="status">
+              0 Usefuls&nbsp&nbsp&nbsp&nbsp{{message.responses.length}} Comments
+        </p>
+      </div>
+      
+      <div class="buttons">
+        <button class="icon ion-thumbsup">
+          Useful
+        </button>
+
+        <button class="icon ion-share">
+          Share
+        </button>
       </div>
 
-      <div class="item item-complex" ng-repeat="comment in message.responses">
-        <div class="item item-avatar">
-          <img ng-src="./images/user.png">
-          <h2>{{comment.author.firstname+" "+comment.author.lastname}}</h2>
-          <p><strong>{{comment.content}}</strong></p>
+      <div class="comment" ng-repeat="comment in message.responses">
+        <img ng-src="http://localhost:8080/api/users/{{comment.author._id}}/profile/avatar">
+        <div class="body">
+          <a><strong>{{comment.author.firstname+" "+comment.author.lastname}}</strong></a>
+          <p class="content">{{comment.content}}</p>
           <p am-time-ago="comment.published"></p>
         </div>
       </div>
-
-      <div class=""></div>
-
-
+      <div class="decorator"></div>
     </div>
   </ion-content>
 

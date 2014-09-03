@@ -20,16 +20,14 @@
         <div class="message-card">
 
           <div class="author-avatar">
-            <img ng-src="./images/user.png">
-            <strong>{{value.author.firstname+" "+value.author.lastname}}</strong>
+            <img ng-src="http://localhost:8080/api/users/{{value.author._id}}/profile/avatar">
+            <a><strong>{{value.author.firstname+" "+value.author.lastname}}</strong></a>
             <p am-time-ago="value.published"></p>
           </div>
 
           <div class="message-content">
-            <!-- <img class="full-image" ng-src="./images/tux.png"> -->
             <p>{{value.content}}</p>
             
-
             <p class="status">
               0 Usefuls&nbsp&nbsp&nbsp&nbsp{{value.responses.length}} Comments
             </p>
@@ -38,17 +36,14 @@
           <div class="buttons">
             
             <button class="icon ion-thumbsup">
-              <!-- <i class="icon ion-thumbsup"></i> -->
               Useful
             </button>
 
             <button class="icon ion-chatbox" ng-click="checkComment(key)">
-              <!-- <i class="icon ion-chatbox"></i> -->
               Comment
             </button>
 
             <button class="icon ion-share">
-              <!-- <i class="icon ion-share"></i> -->
               Share
             </button>
 

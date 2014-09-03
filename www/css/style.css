@@ -1,4 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+a {
+	text-decoration: none;
+	color: #576B8A;
+}
 
 /* @group Tab Bar View */
 
@@ -77,6 +81,7 @@ html { width: 100%; height:100%; overflow:hidden; }
 /* @end */
 
 /* @group Message View */
+
 ion-content.message-view-container {
 	background-color: #F0F1F5;
 }
@@ -162,7 +167,7 @@ ion-item .message-card .buttons {
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 	align-items: center;
-	border-top: 1px dashed #e1e1e1;
+	border-top: 1px dashed #d3d2d2;
 }
 
 ion-item .message-card .buttons button{
@@ -202,3 +207,141 @@ ion-footer-bar.comment-input-bar button {
 }
 /* @end */
 
+
+.comment-view-container {
+	background-color: #F0F1F5;
+}
+
+.comment-card{
+	background-color: #F9F9F9;
+	border: 1px solid #c6c5c5;
+	opacity: 1;
+	-moz-box-shadow: 1px 1px 3px #aeacac;
+	box-shadow: 1px 1px 3px #aeacac;
+	border-radius: 3px;
+	margin: 10px;
+}
+.comment-card .author{
+	display: block;
+	padding: 10px;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+.comment-card .author img{
+	float: left;
+	width: 40px;
+	padding-right: 3px;
+	margin-right: 5px;
+}
+.comment-card .author p{
+	font-size: 12px;
+	color: #a8a7a7;
+}
+.comment-card .message-body p{
+display: block;
+color: #4f4f4f;
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-weight: 500;
+padding-left: 10px;
+padding-right: 10px;
+overflow: auto;
+text-overflow: inherit;
+white-space: normal;
+	margin-top: -10px;
+}
+
+.comment-card .message-body .status {
+font-size: 10px;
+color: #a8a7a7;
+}
+
+.comment-card .buttons {
+display: -webkit-box;
+display: -webkit-flex;
+display: -moz-box;
+display: -moz-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-direction: normal;
+-webkit-box-orient: horizontal;
+-webkit-flex-direction: horizontal;
+-moz-flex-direction: horizontal;
+-ms-flex-direction: horizontal;
+flex-direction: horizontal;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+-webkit-justify-content: center;
+-moz-justify-content: center;
+justify-content: center;
+-webkit-transform: translate3d(0, 0, 0);
+-moz-transform: translate3d(0, 0, 0);
+transform: translate3d(0, 0, 0);
+-ms-text-justify: distribute-all-lines;
+text-justify: distribute-all-lines;
+background-color: #EEEEEF;
+align-items: center;
+border-top: 1px dashed #d3d2d2;
+}
+
+.comment-card .buttons button{
+margin-left: auto;
+border-color: transparent;
+background: none;
+box-shadow: none;
+text-align: justify;
+font-size: px;
+line-height: 30px;
+color: #576B8A;
+position: relative;
+margin-right: auto;
+}
+
+.comment-card .buttons button:active{
+opacity: 0.4;
+}
+
+.comment-card .comment {
+	display: block;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background-color: #EEEEEF;
+	border-top: 2px groove #ffffff;
+	padding: 10px;
+}
+
+
+.comment-card .comment img {
+	width: 40px;
+	padding-righdt: 3px;
+	margin-right: 5px;
+	float: left;
+}
+.comment-card .comment .body {
+	display: inline;
+	margin-top: 0;
+}
+
+.comment-card .comment .body p{
+font-size: 12px;
+color: #a8a7a7;
+	margin-bottom: 0;
+}
+
+.comment-card .comment .body .content{
+font: 13px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+font-weight: 500;
+color: #4f4f4f;
+overflow: auto;
+text-overflow: inherit;
+white-space: normal;
+}
+.comment-card .comment {
+	padding-bottom: 0;
+}
+
+
+.comment-card .decorator {
+	height: 3px;
+	background-color: #EEEEEF;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-top: 1px dashed #d3d2d2;
+}
